@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from "./components/SearchBar";
+import Home from "./pages/Home";
+import Searched from "./pages/Searched";
+import { Route, Link } from "wouter";
+import Gif from "./pages/Gif";
 
+const styles = {
+  Header: "text-5xl font-bold text-center py-5 bg-black text-white",
+};
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App h-screen bg-slate-900 '>
+      <Link href='/'>
+        <button className='mx-auto w-full'>
+          <h1 className={styles.Header}>Easy Gifs</h1>
+        </button>
+      </Link>
+      <SearchBar />
+      <Route path='/' component={Home} />
+      <Route path='/Searched/:keyword' component={Searched} />
+      <Route path='/Gif/:id' component={Gif} />
     </div>
   );
 }
